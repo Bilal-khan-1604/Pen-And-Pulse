@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    position: fixed;
+}
+
+.hl-il{
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.one{
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* background-color: grey; */
+    background-color: #556B2F;
+    background-color: #6A5ACD;
+    background-color:#228B22;
+    background-color:#367588;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.one img{
+    height: auto;
+    width: 50%;
+}
