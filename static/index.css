@@ -1,17 +1,5 @@
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-    min-width: 370px;
-}
-
 :root {
     --justbe-font-size: 76.8px;
-}
-
-.navbar {
-    display: none;
 }
 
 .cover {
@@ -22,77 +10,10 @@ body {
     background-color: #367588;
     display: grid;
     grid-template-rows: auto 1fr;
-    overflow: hidden;
 }
 
 .cover-nav {
     grid-row: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    background: none;
-}
-
-.cover-nav div {
-    margin: 0.5vw 0.2vw 1vw;
-
-}
-
-.cover-logo-name {
-    display: flex;
-    align-items: center;
-    justify-content: left;
-    height: auto;
-    width: 80%;
-}
-
-.cover-logo,
-.cover-name {
-    margin: 0.5vw;
-}
-
-.cover-logo {
-    height: 50px;
-    width: 70px;
-}
-
-.cover-sign-in {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    padding: 0 1vw;
-    width: 20%;
-    z-index: 5;
-}
-
-.cover-name {
-    color: white;
-    color: #FFA500;
-    font-family: "Merriweather", serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-}
-
-.cover-sign-in button {
-    color: white;
-    background: #FFA500;
-    border: none;
-    border-radius: 2rem;
-    width: 80px;
-    height: 30px;
-    text-transform: uppercase;
-    font-family: "Lato", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    cursor: pointer;
-
-    &:hover {
-        color: #D3D3D3;
-    }
 }
 
 .cover-content {
@@ -384,4 +305,12 @@ body {
 
 .animate-move-up-fade {
     animation: moveUpFadeOut 1s ease-in-out forwards;
+}
+
+.cover-nav{
+    border-bottom: 1px solid white;
+}
+
+.cover-foot {
+    border-top: 1px solid white;
 }

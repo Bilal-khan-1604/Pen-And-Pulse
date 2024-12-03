@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static%}
+<link rel="stylesheet" type="text/css" href="{% static 'base1.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+    {% block links %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+    <section class="cover" id="cover">
+        <nav class="cover-nav">
+            <div class="cover-logo-name">
+                {% load static%}
+                <img class="cover-logo" src="{% static 'logo.png' %}" alt="web logo">
+                <p class="cover-name">Pulse & Pen</p>
+            </div>
+            <div class="cover-sign-in"><button class="cover-sign-in-btn">Sign in</button></div>
+        </nav>
+        {% block content %}
+        {% endblock %}
+        <div class="cover-foot">
+            <span class="help"><a href="">Help</a></span>
+            <span class="about"><a href="">About</a></span>
+            <span class="terms"><a href="">Terms</a></span>
+            <span class="privacy"><a href="">Privacy</a></span>
+        </div>
+    </section>
+
+
+</body>
+
+</html>
