@@ -1,0 +1,24 @@
+.terms-conditions{
+    display: flex;
+    flex-direction: column;
+    align-items:start;
+    padding: 0 20vw;
+    margin-bottom: 8vw;
+    font-family: "Lato", serif;
+    font-optical-sizing: auto;
+    line-height: 20px;
+}
+
+.cover-nav{
+    border-bottom: 1px solid black;
+}
+
+.cover-foot {
+    border-top: 1px solid black;
+}
+
+@media (max-width: 700px){
+    .terms-conditions{
+        padding: 0 15vw;
+    }
+}

@@ -1,0 +1,152 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --inputs-width: 25vw;
+}
+
+.cover-sign-in {
+    display: none;
+}
+
+.cover-foot {
+    margin-top: 0;
+}
+
+.sign-up,
+.sign-up-lower,
+.sign-up-info,
+.sui-info,
+.first-name-info,
+.last-name-info,
+.email-info,
+.password-info,
+.confirm-password-info,
+.sui-btns,
+.sign-up-others {
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up {
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 5vw 0;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.sign-up-upper {
+    text-transform: none;
+    font-size: 35px;
+    text-wrap: wrap;
+}
+
+.first-name-info,
+.last-name-info,
+.email-info,
+.password-info,
+.incorrect-password-format,
+.confirm-password-info,
+.incorrect-confirm-password-format,
+.sui-btns {
+    width: 300px;
+}
+
+.first-name-info>*,
+.last-name-info>*,
+.email-info>*,
+.password-info>*,
+.confirm-password-info>*,
+.sui-btns>*,
+.sui-btns>*>* {
+    width: 100%;
+}
+
+.first-name-info>*,
+.last-name-info>*,
+.email-info>*,
+.password-info>*,
+.incorrect-password-format,
+.confirm-password-info>*,
+.incorrect-confirm-password-format,
+.have-acc {
+    font-size: 14px;
+    padding: 0 15px;
+}
+
+.first-name-info input,
+.last-name-info input,
+.email-info input,
+.password-info input,
+.confirm-password-info input {
+    border: none;
+    border-bottom: 1.5px solid black;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.incorrect-password-format,
+.incorrect-confirm-password-format {
+    color: red;
+}
+
+.incorrect-password-format p,
+.incorrect-confirm-password-format p {
+    margin: 0;
+}
+
+.first-name-info,
+.last-name-info,
+.email-info,
+.password-info,
+.confirm-password-info {
+    margin: 8px 0;
+}
+
+.incorrect-password-format,
+.incorrect-confirm-password-format {
+    margin: 2px 0;
+    display: none;
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.5s ease;
+}
+
+.incorrect-password-format.active,
+.incorrect-confirm-password-format.active {
+    display: flex;
+    max-height: 300px;
+}
+
+.sui-btns {
+    justify-content: center;
+    align-items: center;
+    margin: 4vw 0;
+}
+
+.sign-up-btn,
+.have-acc {
+    margin: 8px 0;
+}
+
+.have-acc {
+    text-align: center !important;
+}
+
+.have-acc span a {
+    text-decoration: none;
+    color: rgba(13, 110, 253, 1);
+}
+
+.have-acc span a:hover {
+    color: rgba(13, 110, 253, 0.7);
+}

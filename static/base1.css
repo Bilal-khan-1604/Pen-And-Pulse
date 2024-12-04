@@ -33,8 +33,8 @@ body {
 }
 
 .cover-logo {
-    height: 50px;
-    width: 70px;
+    height: 30px;
+    width: 50px;
 }
 
 .cover-sign-in {
@@ -47,13 +47,11 @@ body {
 }
 
 .cover-name {
-    color: white;
     color: #FFA500;
-    font-family: "Merriweather", serif;
-    font-optical-sizing: auto;
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
     font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
+    font-size: 22px;
 }
 
 .cover-sign-in button {
@@ -94,6 +92,7 @@ body {
 .cover-foot span a {
     text-decoration: none;
     color: white;
+
     &:hover {
         text-decoration: underline;
         color: #abbdcf;

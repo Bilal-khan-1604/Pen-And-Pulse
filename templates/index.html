@@ -3,6 +3,11 @@
 {% block links %}
 {% load static%}
 <link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+<link rel="prefetch" href="{% static sign-in.html}">
+<link rel="preload" href="{% static sign-up.html}" as="document">
+<link rel="preload" href="{% static sign-in.css}" as="style">
+<link rel="preload" href="{% static sign-up.css}" as="style">
+<link rel="preload" href="{% static sign-in.js}" as="script">
 <script src="{% static 'cover.js' %}" defer></script>
 {% endblock %}
 

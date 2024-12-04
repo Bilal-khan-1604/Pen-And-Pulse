@@ -304,7 +304,7 @@
 }
 
 .animate-move-up-fade {
-    animation: moveUpFadeOut 1s ease-in-out forwards;
+    animation: moveUpFadeOut 0.2s ease forwards;
 }
 
 .cover-nav{

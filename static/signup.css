@@ -1,0 +1,63 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --inputs-width: 25vw;
+}
+
+.cover-sign-in {
+    display: none;
+}
+
+.cover-foot {
+    margin-top: 0;
+}
+
+.sign-up-options,
+.aign-up-lower{
+    display: flex;
+    flex-direction: column;
+}
+
+.sign-up-options {
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+.sign-up-upper {
+    text-transform: capitalize;
+    font-size: 35px;
+    text-wrap: wrap;
+}
+
+.sign-up-email,
+.sign-up-google,
+.sign-up-linkedin{
+    width: 300px;
+    margin: 20px 0;
+}
+
+.sign-up-email button,
+.sign-up-google button,
+.sign-up-linkedin button{
+    display: grid !important;
+    grid-template-columns: auto 1fr;
+    width: 100%;
+    border-radius: 2rem;
+}
+
+.sign-up-email button div img,
+.sign-up-google button div img,
+.sign-up-linkedin button div img{
+    width: 20px;
+    height: 20px;
+}
+
