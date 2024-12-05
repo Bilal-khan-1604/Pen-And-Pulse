@@ -50,7 +50,9 @@ body {
 
 .first-name-info,
 .last-name-info,
+.incorrect-name-format,
 .email-info,
+.incorrect-email-format,
 .password-info,
 .incorrect-password-format,
 .confirm-password-info,
@@ -71,7 +73,9 @@ body {
 
 .first-name-info>*,
 .last-name-info>*,
+.incorrect-name-format,
 .email-info>*,
+.incorrect-email-format,
 .password-info>*,
 .incorrect-password-format,
 .confirm-password-info>*,
@@ -94,11 +98,15 @@ body {
     }
 }
 
+.incorrect-name-format,
+.incorrect-email-format,
 .incorrect-password-format,
 .incorrect-confirm-password-format {
     color: red;
 }
 
+.incorrect-name-format p,
+.incorrect-email-format p,
 .incorrect-password-format p,
 .incorrect-confirm-password-format p {
     margin: 0;
@@ -112,15 +120,19 @@ body {
     margin: 8px 0;
 }
 
+.incorrect-name-format,
+.incorrect-email-format,
 .incorrect-password-format,
 .incorrect-confirm-password-format {
     margin: 2px 0;
     display: none;
     overflow: hidden;
     max-height: 0;
-    transition: max-height 0.5s ease;
+    transition: max-height 0.2s ease;
 }
 
+.incorrect-name-format.active,
+.incorrect-email-format.active,
 .incorrect-password-format.active,
 .incorrect-confirm-password-format.active {
     display: flex;
@@ -149,4 +161,15 @@ body {
 
 .have-acc span a:hover {
     color: rgba(13, 110, 253, 0.7);
+}
+
+.loading-overlay{
+    width: 100%;
+    height: 100vh;
+    position:fixed;
+    top: 0;
+    background-color: rgba(255,255,255,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
 }

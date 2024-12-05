@@ -140,12 +140,16 @@ body {
 }
 
 .no-acc,
-.sign-in-or,
-.google,
-.linked-in {
+.sign-in-or{
     display: flex !important;
     justify-content: center;
     align-items: center;
+}
+
+.google,
+.linked-in{
+    display: grid !important;
+    grid-template-columns: auto 1fr;
 }
 
 .google img,

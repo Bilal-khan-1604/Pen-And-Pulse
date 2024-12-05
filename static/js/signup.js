@@ -21,3 +21,17 @@ function toggleContainer(targetClass) {
     }
   }
   
+//   document.getElementById('registrationForm').addEventListener('input', function () {
+//     const password = document.querySelector('password-input').value;
+//     const confirmPassword = document.querySelector('confirm-password-input').value;
+//     const message = document.querySelector('incorrect-confirm-password-format');
+//     const submitButton = document.getElementById('submitButton');
+    
+//     if (password !== confirmPassword) {
+//         message.style.display = 'flex';
+//         submitButton.disabled = true;
+//     } else {
+//       message.style.display = 'none';
+//         submitButton.disabled = false;
+//     }
+// });

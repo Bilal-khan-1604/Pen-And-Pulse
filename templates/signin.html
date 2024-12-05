@@ -2,10 +2,10 @@
 
 {% block links %}
 {% load static%}
-<link rel="stylesheet" type="text/css" href="{% static 'signin.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/signin.css' %}">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-<script src="{% static 'signup.js' %}" defer></script>
+<script src="{% static 'js/signup.js' %}" defer></script>
 {% endblock %}
 
 {% block title %}Sign in{% endblock %}
@@ -35,7 +35,7 @@
                     <button class="btn btn-primary">Sign in</button>
                 </div>
                 <div class="no-acc">
-                    <span class="no-acc-inner">Don't have an account? <a href="">Sign up</a></span>
+                    <span class="no-acc-inner">Don't have an account? <a href="{% url 'sign-up' %}">Sign up</a></span>
                 </div>
             </div>
         </form>

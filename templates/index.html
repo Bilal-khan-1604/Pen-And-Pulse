@@ -2,23 +2,23 @@
 
 {% block links %}
 {% load static%}
-<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
 <link rel="prefetch" href="{% static sign-in.html}">
 <link rel="preload" href="{% static sign-up.html}" as="document">
 <link rel="preload" href="{% static sign-in.css}" as="style">
 <link rel="preload" href="{% static sign-up.css}" as="style">
 <link rel="preload" href="{% static sign-in.js}" as="script">
-<script src="{% static 'cover.js' %}" defer></script>
+<script src="{% static 'js/cover.js' %}" defer></script>
 {% endblock %}
 
-{% block title %}Home Page{% endblock %}
+{% block title %}Pulse & Pen{% endblock %}
 
 {% block content %}
 <picture class="cover-bg">
-    <source srcset="{% static 'coverxxS.png' %}" media="(max-width: 900px)">
-    <source srcset="{% static 'coverxS.png' %}" media="(max-width: 1070px)">
-    <source srcset="{% static 'coverS.png' %}" media="(max-width: 1220px)">
-    <img src="{% static 'coverL.png' %}" alt="Description of the image">
+    <source srcset="{% static 'images/coverxxS.png' %}" media="(max-width: 900px)">
+    <source srcset="{% static 'images/coverxS.png' %}" media="(max-width: 1070px)">
+    <source srcset="{% static 'images/coverS.png' %}" media="(max-width: 1220px)">
+    <img src="{% static 'images/coverL.png' %}" alt="Description of the image">
 </picture>
 <div class="cover-content">
     <div class="cover-text">

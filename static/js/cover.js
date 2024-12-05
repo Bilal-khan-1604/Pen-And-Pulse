@@ -2,13 +2,12 @@ document.querySelectorAll('.cover-sign-in-btn, .join-btn').forEach(button => {
   button.addEventListener('click', function () {
     const coverElement = document.querySelector('.cover');
 
-    // Add animation class
     coverElement.classList.add('animate-move-up-fade');
 
-    // Handle animation end
     coverElement.addEventListener('animationend', function () {
       coverElement.style.visibility = 'hidden';
-      coverElement.style.pointerEvents = 'none'; // Ensure no interaction
+      coverElement.style.pointerEvents = 'none';
+      
       if (button.classList.contains('cover-sign-in-btn')) {
         window.location.href = "sign-in";
       } else if (button.classList.contains('join-btn')) {
