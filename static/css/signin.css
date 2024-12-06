@@ -91,7 +91,7 @@ body {
 
 .email-info,
 .password-info,
-.incorrect,
+.incorrect-email-password,
 .sign-in-btn,
 .no-acc,
 .google,
@@ -99,29 +99,29 @@ body {
     margin: 3.75px 0;
 }
 
-.incorrect {
+.incorrect-email-password {
     overflow: hidden;
+    display: none;
     max-height: 0;
     transition: max-height 0.5s ease;
 }
 
-.incorrect.active{
+.incorrect-email-password.active{
     display: flex;
     max-height: 300px;
 }
 
-.incorrect p {
+.incorrect-email-password p {
     margin: 0;
     color: red;
     font-size: 14px;
-    display: none;
 }
 
 .email-info label,
 .email-info input,
 .password-info label,
 .password-info input,
-.incorrect {
+.incorrect-email-password {
     padding: 0 15px;
     font-size: 14px;
 }

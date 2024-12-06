@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
-        <script src="{% static 'js/base1.js' %}" defer></script>
+    <script src="{% static 'js/base1.js' %}" defer></script>
     {% block links %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -28,12 +28,18 @@
         </nav>
         {% block content %}
         {% endblock %}
-        <div class="cover-foot">
-            <span class="help"><a href="">Help</a></span>
-            <span class="about"><a href="">About</a></span>
-            <span class="terms"><a href="{% url 'terms_and_conditions' %}">Terms</a></span>
-            <span class="privacy"><a href="{% url 'privacy_policy' %}">Privacy</a></span>
+        <div class="cover-footer">
+            <div class="footer-links">
+                <span class="help"><a href="{% url 'contact' %}">Contact</a></span>
+                <span class="about"><a href="{% url 'about' %}">About</a></span>
+                <span class="terms"><a href="{% url 'terms-and-conditions' %}">Terms</a></span>
+                <span class="privacy"><a href="{% url 'privacy-policy' %}">Privacy</a></span>
+            </div>
+            <div class="footer-rights">
+                <p>&copy; 2024 Pulse and Pen. All rights reserved.</p>
+            </div>
         </div>
+        
     </section>
 
 

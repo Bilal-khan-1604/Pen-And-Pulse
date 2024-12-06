@@ -162,14 +162,3 @@ body {
 .have-acc span a:hover {
     color: rgba(13, 110, 253, 0.7);
 }
-
-.loading-overlay{
-    width: 100%;
-    height: 100vh;
-    position:fixed;
-    top: 0;
-    background-color: rgba(255,255,255,0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-}

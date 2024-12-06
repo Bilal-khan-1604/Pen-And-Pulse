@@ -6,6 +6,7 @@
     margin-bottom: 8vw;
     font-family: "Lato", serif;
     font-optical-sizing: auto;
+    line-height: 1.6;
 }
 
 .cover-nav{
@@ -20,4 +21,21 @@
     .privacy-policy{
         padding: 0 15vw;
     }
+}
+
+h1,
+h2,
+h3,
+h4,
+strong{
+    color: #367588;
+}
+
+a{
+    text-decoration: none;
+    color: rgba(13, 110, 253, 1);
+}
+
+a:hover {
+    color: rgba(13, 110, 253, 0.7);
 }

@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (index < inputFields.length - 1) {
                     inputFields[index + 1].focus();
                 } else {
+                    event.preventDefault();
                     validateAndSubmitForm(form, finalValidate);
                 }
             }
@@ -54,14 +55,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const allValid = finalValidate();
         if (allValid) {
             loadingOverlay.style.display = 'flex';
-            alert("Form is valid! Proceeding to submission...");
-            submitForm(form, inputFields);
+            submitForm(form, inputFields, loadingOverlay);
         } else {
-            console.log("Form validation failed.");
+            return;
         }
     }
 
-    // Inline validation logic
     function inlineValidate() {
         validateField("password", false);
         validateField("confirmPassword", false);
@@ -69,7 +68,6 @@ document.addEventListener("DOMContentLoaded", function () {
         validateField("name", false);
     }
 
-    // Final validation logic
     function finalValidate() {
         let isValid = true;
 
@@ -81,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
         return isValid;
     }
 
-    // Validate individual fields
     function validateField(type, finalValidation) {
         let isValid = true;
 
@@ -181,7 +178,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function toggleContainer(targetElement, show) {
         if (!targetElement) {
-            console.error("Invalid target element");
             return;
         }
 
@@ -208,14 +204,19 @@ function getCookie(name) {
     return cookieValue;
 }
 
-function submitForm(form, inputFields) {
+function submitForm(form, inputFields, loadingOverlay) {
     const csrfToken = getCookie('csrftoken');
-    const formData = new FormData(form);
+
+    const formData = {};
+    inputFields.forEach(function (field) {
+        formData[field.name] = field.value;
+    });
 
     fetch(form.action, {
         method: 'POST',
-        body: formData,
+        body: JSON.stringify(formData),
         headers: {
+            'Content-Type': 'application/json',
             'X-CSRFToken': csrfToken,
         },
     })
@@ -226,7 +227,7 @@ function submitForm(form, inputFields) {
                 });
                 window.location.href = '/sign-in'; 
             } else {
-                console.error("Failed to submit form.");
+                loadingOverlay.style.display = 'none';
             }
         })
         .catch((error) => console.error("Error:", error));
