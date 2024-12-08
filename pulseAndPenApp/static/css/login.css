@@ -34,7 +34,6 @@ body {
     width: 100%;
     min-height: 100vh;
     font-family: Georgia, "Times New Roman", Times, serif;
-    border: 1px solid black;
     box-sizing: border-box;
 }
 

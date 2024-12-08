@@ -9,9 +9,9 @@ document.querySelectorAll('.cover-sign-in-btn, .join-btn').forEach(button => {
       coverElement.style.pointerEvents = 'none';
       
       if (button.classList.contains('cover-sign-in-btn')) {
-        window.location.href = "/sign-in";
+        window.location.href = "/login/";
       } else if (button.classList.contains('join-btn')) {
-        window.location.href = "/sign-up";
+        window.location.href = "/join/";
       }
     }, { once: true });
   });

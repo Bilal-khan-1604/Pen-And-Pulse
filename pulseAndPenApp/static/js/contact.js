@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     clearFields();
     hideLoadingOverlay(loadingOverlay);
 
-    enableEnterKeyNavigation(form, loadingOverlay)
     form.addEventListener("submit", async (event) => {
         event.preventDefault();
         submitForm(form, loadingOverlay);
@@ -26,26 +25,6 @@ function clearFields() {
     });
 }
 
-function enableEnterKeyNavigation(form, loadingOverlay) {
-    const inputFields = document.querySelectorAll("input");
-    const textAreas = document.querySelectorAll("textarea");
-    const focusableElements = [...inputFields, ...textAreas];
-
-    focusableElements.forEach((element, index) => {
-        element.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-
-                if (index < focusableElements.length - 1) {
-                    focusableElements[index + 1].focus();
-                } else {
-                    submitForm(form, loadingOverlay);
-                }
-            }
-        });
-    });
-}
-
 function getCookie(name) {
     const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
     for (const cookie of cookies) {
@@ -57,6 +36,8 @@ function getCookie(name) {
 }
 
 async function submitForm(form, overlay) {
+    const csrfToken = getCookie('csrftoken');
+
     overlay.style.display = 'flex';
     const formData = new FormData(form);
     const jsonData = {};
@@ -70,7 +51,7 @@ async function submitForm(form, overlay) {
             method: form.method,
             headers: {
                 "Content-Type": "application/json",
-                "X-CSRFToken": getCookie("csrftoken"),
+                "X-CSRFToken": csrfToken,
             },
             body: JSON.stringify(jsonData),
         });
@@ -88,6 +69,7 @@ async function submitForm(form, overlay) {
 
     } catch (error) {
         console.error("Error:", error);
+        hideLoadingOverlay();
         displayModal("Error", "An unexpected error occurred. Please try again later.");
     }
 }

@@ -27,21 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
         field.value = "";
     });
 
-    inputFields.forEach((input, index) => {
-        input.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-
-                if (index < inputFields.length - 1) {
-                    inputFields[index + 1].focus();
-                } else {
-                    event.preventDefault();
-                    validateAndSubmitForm(form, finalValidate);
-                }
-            }
-        });
-    });
-
     [firstNameField, lastNameField, emailField, passwordField, confirmPasswordField].forEach((field) =>
         field.addEventListener("input", inlineValidate)
     );
@@ -225,7 +210,7 @@ function submitForm(form, inputFields, loadingOverlay) {
                 inputFields.forEach(function (field) {
                     field.value = "";
                 });
-                window.location.href = '/sign-in'; 
+                window.location.href = '/login/'; 
             } else {
                 loadingOverlay.style.display = 'none';
             }

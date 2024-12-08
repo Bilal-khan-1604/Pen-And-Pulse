@@ -1,25 +1,25 @@
+from django.contrib.auth.models import AbstractUser
 from django.db import models
+from .managers import CustomUserManager
 
-class User(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
+class User(AbstractUser):
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=128)
+    full_name = models.CharField(max_length=300, blank=True)
 
-    def set_password(self, raw_password):
-        from django.contrib.auth.hashers import make_password
-        self.password = make_password(raw_password)
+    username = None
 
-class Login(models.Model):
-    email = models.EmailField(unique=False)
-    date_time = models.DateTimeField()
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name']
+
+    objects = CustomUserManager()
 
 class Contact(models.Model):
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     email = models.EmailField()
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name} - {self.email}"

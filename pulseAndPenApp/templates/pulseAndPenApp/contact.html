@@ -1,4 +1,4 @@
-{% extends 'base1.html' %}
+{% extends 'pulseAndPenApp/base1.html' %}
 
 {% block links %}
 {% load static%}
@@ -45,7 +45,7 @@
           </div>
         </div>
         <div class="responsive-cell-block wk-ipadp-6 wk-tab-12 wk-mobile-12 wk-desk-6 right-one" id="i1zj">
-          <form class="form-box" method="post" action="/contact/form/submit">
+          <form class="form-box" method="post" action="/contact/">
             {% csrf_token %}
             <div class="container-block form-wrapper">
               <p class="text-blk contactus-head">
@@ -56,19 +56,19 @@
               </p>
               <div class="responsive-container-block">
                 <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i10mt-7">
-                  <input class="first-name-input input" id="ijowk-7" name="first_name" placeholder="First Name">
+                  <input class="first-name-input input" id="ijowk-7" name="first_name" placeholder="First Name" required>
                 </div>
                 <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i1ro7">
-                  <input class="last-name-input input" id="indfi-5" name="last_name" placeholder="Last Name">
+                  <input class="last-name-input input" id="indfi-5" name="last_name" placeholder="Last Name" required>
                 </div>
                 <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-6 wk-ipadp-6 emial" id="ityct">
-                  <input class="email-input input" id="ipmgh-7" name="email" placeholder="Email">
+                  <input class="email-input input" id="ipmgh-7" name="email" placeholder="Email" required>
                 </div>
                 <div class="responsive-cell-block wk-desk-6 wk-ipadp-6 wk-tab-12 wk-mobile-12">
-                  <input class="phone-number-input input" id="imgis-6" name="phone_number" placeholder="Phone Number">
+                  <input class="phone-number-input input" id="imgis-6" name="phone_number" placeholder="Phone Number" required>
                 </div>
                 <div class="responsive-cell-block wk-tab-12 wk-mobile-12 wk-desk-12 wk-ipadp-12" id="i634i-7">
-                  <textarea aria-placeholder="Type message here" class="text-input textinput" id="i5vyy-7" placeholder="Type message here" name="message"></textarea>
+                  <textarea aria-placeholder="Type message here" class="text-input textinput" id="i5vyy-7" placeholder="Type message here" name="message" required></textarea>
                 </div>
               </div>
               <button class="submit-btn" type="submit">

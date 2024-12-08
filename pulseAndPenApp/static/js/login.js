@@ -6,10 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailPasswordError = document.querySelector(".incorrect-email-password");
 
     hideLoadingOverlay();
-
     clearFields(inputFields);
-
-    enableEnterKeyNavigation(inputFields, form, loadingOverlay, emailField, emailPasswordError);
 
     form.addEventListener("submit", function (event) {
         event.preventDefault();
@@ -18,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     emailField.addEventListener("input", function () {
         const email = emailField.value.trim();
-        emailPasswordError.querySelector('p').textContent = "Email is incorrect."
+        emailPasswordError.querySelector('p').textContent = "Email format is incorrect."
         toggleContainer(emailPasswordError, email && !isValidEmail(email));
     });
 });
@@ -31,21 +28,6 @@ function hideLoadingOverlay() {
 function clearFields(fields) {
     fields.forEach((field) => {
         field.value = "";
-    });
-}
-
-function enableEnterKeyNavigation(fields, form, loadingOverlay, emailField, emailPasswordError) {
-    fields.forEach((input, index) => {
-        input.addEventListener("keydown", function (event) {
-            if (event.key === "Enter") {
-                event.preventDefault();
-                if (index < fields.length - 1) {
-                    fields[index + 1].focus();
-                } else {
-                    submitForm(form, fields, loadingOverlay, emailField, emailPasswordError);
-                }
-            }
-        });
     });
 }
 
@@ -96,28 +78,24 @@ function submitForm(form, inputFields, loadingOverlay, emailField, emailPassword
             "X-CSRFToken": csrfToken,
         },
     })
-        .then((response) => response.json())
-        .then((responseData) => {
-            if (responseData.submitted === "true") {
-                clearFields(inputFields);
-                hideLoadingOverlay();
-                window.location.href = "/user-home";
+        .then((response) => {
+            if (response.ok) {
+                window.location.href = response.url;
             } else {
+                return response.json();
+            }
+        })
+        .then((responseData) => {
+            if (responseData && responseData.error) {
                 hideLoadingOverlay();
                 toggleContainer(emailPasswordError, true);
-
-                if (responseData.errors) {
-                    const errorContainer = emailPasswordError.querySelector("p");
-                    const errorMessages = Object.entries(responseData.errors)
-                    .map(([_, message]) => message)
-                    .join("");
-                    errorContainer.textContent = errorMessages;
-                }
+                const errorContainer = emailPasswordError.querySelector("p");
+                errorContainer.textContent = responseData.error;
             }
         })
         .catch((error) => {
             hideLoadingOverlay();
             console.error("Error:", error);
-            hideLoadingOverlay();
         });
 }
+

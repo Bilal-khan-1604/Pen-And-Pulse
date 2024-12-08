@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
     } else {
         button.onclick = function () {
-            window.location.href = '/sign-in';
+            window.location.href = '/login/';
         };
     }
 });
