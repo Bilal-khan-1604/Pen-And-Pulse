@@ -8,7 +8,8 @@
 }
 
 h1,
-h2 {
+h2,
+strong {
     color: #367588;
 }
 
@@ -21,19 +22,27 @@ h1 {
 
 h2{
     font-size: 24px !important;
-    font-weight: normal !important;
+    font-weight: bold !important;
 }
 
 p {
     margin: 15px 0;
 }
 
-ul {
+ul:not(.navbar-nav) {
     margin: 10px 0 20px 20px;
 }
 
-ul li {
+ul:not(.navbar-nav) li {
     margin: 5px 0;
+}
+
+.circle-ol{
+    list-style:disc;
+}
+
+.circle-ol li::marker{
+    color: #367588;
 }
 
 .highlight {

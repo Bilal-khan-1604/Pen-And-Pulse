@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Contact
+from .models import User, Contact, Blog
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, style={'input_type': 'password'})
@@ -34,3 +34,13 @@ class ContactSerializer(serializers.ModelSerializer):
         if value and not value.isdigit():
             raise serializers.ValidationError("Phone number must contain only digits.")
         return value
+    
+class BlogSerializer(serializers.ModelSerializer):
+    author = serializers.StringRelatedField(read_only=True)
+    created_at = serializers.DateTimeField(read_only=True)
+
+    class Meta:
+        model = Blog
+        fields = ['id', 'author', 'title', 'content', 'category', 'thumbnail_url', 'created_at']
+        read_only_fields = ['id', 'author', 'created_at']
+

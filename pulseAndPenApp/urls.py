@@ -7,9 +7,11 @@ urlpatterns = [
     path('forgot-password', views.forgot_password, name='forgot-password'),
     path('signup/', views.SignupView.as_view(), name='signup'),
     path('join/', views.join, name='join'),
-    path('home/', views.HomeView.as_view(), name='home'),
+    path('home/', views.home_view, name='home'),
     path('contact/', views.ContactView.as_view(), name='contact'),
     path('about/', views.about, name='about'),
     path('privacy-policy/', views.privacy_policy, name='privacy-policy'),
     path('terms-and-conditions/', views.terms_and_conditions, name='terms-and-conditions'),
+    path('publish/', views.publish, name='publish'),
+    path('publish/blog/', views.BlogCreateView.as_view(), name='publish-blog'),
 ]

@@ -23,3 +23,15 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.email}"
+    
+
+class Blog(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, related_name="blogs")
+    title = models.CharField(max_length=255)
+    content = models.TextField()
+    category = models.CharField(max_length=100)
+    thumbnail_url = models.URLField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title

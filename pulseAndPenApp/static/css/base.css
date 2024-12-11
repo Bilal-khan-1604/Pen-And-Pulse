@@ -1,0 +1,215 @@
+.navbar {
+    --bs-navbar-brand-hover-color: #FFA500 !important;
+    background-color: #367588 !important;
+}
+
+.brand-name {
+    color: #FFA500;
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.btn-outline-warning {
+    --bs-btn-color: #FFA500 !important;
+    --bs-btn-border-color: #FFA500 !important;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #FFA500 !important;
+    --bs-btn-hover-border-color: #FFA500 !important;
+    --bs-btn-focus-shadow-rgb: 255, 193, 7;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #FFA500 !important;
+    --bs-btn-active-border-color: #FFA500 !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #FFA500 !important;
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-disabled-border-color: #FFA500 !important;
+    --bs-gradient: none;
+}
+
+.btn-warning {
+    --bs-btn-color: #000 !important;
+    --bs-btn-bg: #FFA500 !important;
+    --bs-btn-border-color: #FFA500 !important;
+    --bs-btn-hover-color: #000;
+    --bs-btn-hover-bg: #FFA500 !important;
+    --bs-btn-hover-border-color: #FFA500 !important;
+    --bs-btn-focus-shadow-rgb: 217, 164, 6;
+    --bs-btn-active-color: #000;
+    --bs-btn-active-bg: #FFA500 !important;
+    --bs-btn-active-border-color: #FFA500 !important;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #000;
+    --bs-btn-disabled-bg: #FFA500 !important;
+    --bs-btn-disabled-border-color: #FFA500 !important;
+}
+
+.navbar-toggler {
+    border: none !important;
+
+    &:focus {
+        box-shadow: none !important;
+    }
+}
+
+footer {
+    background-color: #367588;
+    max-width: 100% !important;
+    color: white !important;
+    margin-bottom: 0 !important;
+    border-radius: 0 !important;
+}
+
+footer div.container {
+    padding: 0 !important;
+    max-width: 100% !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.footer-brand-name {
+    font-size: 20px !important;
+    color: #FFA500;
+    font-family: "Anton SC", sans-serif;
+    font-weight: 400 !important;
+    font-style: normal !important;
+    margin-top: 0 !important;
+}
+
+@media (min-width: 768px) {
+    .footer-brand-name {
+        font-size: 28px !important;
+    }
+}
+
+.useful-list,
+.contact-list,
+.legal-list {
+    list-style: none;
+    margin: 0 !important;
+}
+
+ul {
+    padding-left: 0 !important;
+}
+
+.footer-brand-name,
+.brand-info-text,
+.useful-title,
+.useful-item,
+.contact-title,
+.contact-item,
+.legal-title,
+.legal-item {
+    margin: 10px 0 !important;
+}
+
+.useful-title,
+.contact-title,
+.legal-title {
+    text-decoration: underline solid #FFA500 2px;
+    text-underline-offset: 6px;
+    font-size: 16px !important;
+}
+
+.brand-info-text,
+.useful-item,
+.contact-item,
+.legal-item {
+    font-size: 14px;
+}
+
+.useful-item a,
+.contact-item a,
+.legal-item a {
+    color: #B0D4DD;
+
+    &:hover {
+        color: #CCE7ED;
+    }
+}
+
+.footer-1,
+.footer-2,
+.brand-info,
+.useful-links,
+.contact,
+.legal {
+    width: 50%;
+}
+
+.newsletter {
+    border: 2.5px dashed #B0D4DD;
+    flex: auto 1fr !important;
+}
+
+.newsletter-text {
+    margin: 10px;
+}
+
+.newsletter-text span {
+    color: #FFA500 !important;
+    font-weight: bold;
+}
+
+.newsletter-email input {
+    max-width: 600px;
+    border: none;
+    height: 35px;
+    padding: 8px 10px;
+    margin: 10px 0;
+    font-size: 14px;
+    border-radius: 2rem;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.newsletter-email button {
+    margin-left: 15px;
+    line-height: 20px !important;
+    border-radius: 2rem !important;
+}
+
+.copyright {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #B0D4DD;
+}
+
+@media (max-width: 576px) {
+
+    .footer-1,
+    .footer-2 {
+        width: 100%;
+    }
+
+    .brand-info,
+    .useful-links,
+    .contact,
+    .legal {
+        width: 50%;
+    }
+
+    .brand-info,
+    .useful-links {
+        margin-bottom: 0 !important;
+    }
+
+    .contact,
+    .legal {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+    }
+}
+
+.loading-overlay{
+    width: 100%;
+    height: 100vh;
+    position:fixed;
+    top: 0;
+    background-color: rgba(255,255,255,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}

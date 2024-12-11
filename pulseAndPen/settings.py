@@ -10,7 +10,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -56,11 +55,11 @@ WSGI_APPLICATION = 'pulseAndPen.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "postgres",  # Extracted from the URL path
-        "USER": "postgres",  # Extracted from the username
-        "PASSWORD": "655953mg41l2DGgs",  # Extracted from the password
-        "HOST": "calmly-collected-grenadier.data-1.euc1.tembo.io",  # Extracted from the host
-        "PORT": "5432",  # Extracted from the port
+        "NAME": "postgres",
+        "USER": "postgres",
+        "PASSWORD": "655953mg41l2DGgs",
+        "HOST": "calmly-collected-grenadier.data-1.euc1.tembo.io",
+        "PORT": "5432",
     }
 }
 
@@ -87,11 +86,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = '/pulseAndPenApp/static/'
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+STATIC_URL = '/pulseAndPenApp/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR , "pulseAndPenApp/static")]
 
 AUTH_USER_MODEL = 'pulseAndPenApp.User'
@@ -103,3 +100,16 @@ LOGOUT_REDIRECT_URL = 'login/'
 JWT_SECRET_KEY = config('JWT_SECRET_KEY')
 JWT_ALGORITHM = config('JWT_ALGORITHM', default='HS256')
 JWT_EXPIRATION_TIME = config('JWT_EXPIRATION_TIME', default=3600, cast=int)  # Cast ensures it's an integer
+
+INSTALLED_APPS += [
+    'cloudinary',
+    'cloudinary_storage',
+]
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': config('CLOUDINARY_API_KEY'),
+    'API_SECRET': config('CLOUDINARY_API_SECRET'),
+}
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'

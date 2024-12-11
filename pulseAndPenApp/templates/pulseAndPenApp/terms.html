@@ -1,14 +1,17 @@
-{% extends 'pulseAndPenApp/base1.html' %}
+{% extends 'pulseAndPenApp/baseOuter.html' %}
+
+{% load static%}
 
 {% block links %}
-{% load static%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/terms.css' %}">
 {% endblock %}
 
-{% block title %}Terms and Conditions{% endblock %}
+{% block title %}
+Terms and Conditions
+{% endblock %}
 
 {% block content %}
-<div class="terms-conditions">
+<div class="terms-conditions my-5">
     <h1>Terms and conditions</h1>
     <p>These terms and conditions (“Agreement”) set forth the general terms and conditions of your use of the <a
             href="https://www.pulseandpen.vercel.app">pulseandpen.vercel.app</a> website (“Website” or “Service”)

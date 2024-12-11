@@ -1,15 +1,18 @@
-{% extends 'pulseAndPenApp/base1.html' %}
+{% extends 'pulseAndPenApp/baseOuter.html' %}
+
+{% load static%}
 
 {% block links %}
-{% load static%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/privacyPolicy.css' %}">
 {% endblock %}
 
-{% block title %}Privacy Policy{% endblock %}
+{% block title %}
+Privacy Policy
+{% endblock %}
 
 {% block content %}
 
-<div class="privacy-policy">
+<div class="privacy-policy my-5">
     <h1>Privacy Policy</h1>
     <p>Last updated: December 02, 2024</p>
     <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your
@@ -27,7 +30,7 @@
     </p>
     <h3>Definitions</h3>
     <p>For the purposes of this Privacy Policy:</p>
-    <ul>
+    <ol>
         <li>
             <p><strong>Account</strong> means a unique account created for You to access our Service or parts of our
                 Service.</p>
@@ -91,7 +94,7 @@
                 legal
                 entity on behalf of which such individual is accessing or using the Service, as applicable.</p>
         </li>
-    </ul>
+    </ol>
     <h2>Collecting and Using Your Personal Data</h2>
     <h3>Types of Data Collected</h3>
     <h4>Personal Data</h4>
@@ -99,7 +102,7 @@
         can
         be used to contact or identify You. Personally identifiable information may include, but is not limited to:
     </p>
-    <ul>
+    <ol class="circle-ol">
         <li>
             <p>Email address</p>
         </li>
@@ -112,7 +115,7 @@
         <li>
             <p>Usage Data</p>
         </li>
-    </ul>
+    </ol>
     <h4>Usage Data</h4>
     <p>Usage Data is collected automatically when using the Service.</p>
     <p>Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser
@@ -130,13 +133,13 @@
     <h4>Information from Third-Party Social Media Services</h4>
     <p>The Company allows You to create an account and log in to use the Service through the following Third-party
         Social Media Services:</p>
-    <ul>
+    <ol class="circle-ol">
         <li>Google</li>
         <li>Facebook</li>
         <li>Instagram</li>
         <li>Twitter</li>
         <li>LinkedIn</li>
-    </ul>
+    </ol>
     <p>If You decide to register through or otherwise grant us access to a Third-Party Social Media Service, We may
         collect Personal data that is already associated with Your Third-Party Social Media Service's account, such
         as
@@ -152,7 +155,7 @@
         information. Tracking technologies used are beacons, tags, and scripts to collect and track information and
         to
         improve and analyze Our Service. The technologies We use may include:</p>
-    <ul>
+    <ol class="circle-ol">
         <li><strong>Cookies or Browser Cookies.</strong> A cookie is a small file placed on Your Device. You can
             instruct Your browser to refuse all Cookies or to indicate when a Cookie is being sent. However, if You
             do
@@ -166,7 +169,7 @@
             related website statistics (for example, recording the popularity of a certain section and verifying
             system
             and server integrity).</li>
-    </ul>
+    </ol>
     <p>Cookies can be &quot;Persistent&quot; or &quot;Session&quot; Cookies. Persistent Cookies remain on Your
         personal
         computer or mobile device when You go offline, while Session Cookies are deleted as soon as You close Your
@@ -175,7 +178,7 @@
             href="https://www.freeprivacypolicy.com/blog/sample-privacy-policy-template/#Use_Of_Cookies_And_Tracking"
             target="_blank">Free Privacy Policy website</a> article.</p>
     <p>We use both Session and Persistent Cookies for the purposes set out below:</p>
-    <ul>
+    <ol class="circle-ol">
         <li>
             <p><strong>Necessary / Essential Cookies</strong></p>
             <p>Type: Session Cookies</p>
@@ -205,13 +208,13 @@
                 use
                 the Website.</p>
         </li>
-    </ul>
+    </ol>
     <p>For more information about the cookies we use and your choices regarding cookies, please visit our Cookies
         Policy
         or the Cookies section of our Privacy Policy.</p>
     <h3>Use of Your Personal Data</h3>
     <p>The Company may use Personal Data for the following purposes:</p>
-    <ul>
+    <ol class="circle-ol">
         <li>
             <p><strong>To provide and maintain our Service</strong>, including to monitor the usage of our Service.
             </p>
@@ -258,9 +261,9 @@
                 to
                 evaluate and improve our Service, products, services, marketing and your experience.</p>
         </li>
-    </ul>
+    </ol>
     <p>We may share Your personal information in the following situations:</p>
-    <ul>
+    <ol class="circle-ol">
         <li><strong>With Service Providers:</strong> We may share Your personal information with Service Providers
             to
             monitor and analyze the use of our Service, to contact You.</li>
@@ -290,7 +293,7 @@
             Your profile.</li>
         <li><strong>With Your consent</strong>: We may disclose Your personal information for any other purpose with
             Your consent.</li>
-    </ul>
+    </ol>
     <h3>Retention of Your Personal Data</h3>
     <p>The Company will retain Your Personal Data only for as long as is necessary for the purposes set out in this
         Privacy Policy. We will retain and use Your Personal Data to the extent necessary to comply with our legal
@@ -339,13 +342,13 @@
         law or in response to valid requests by public authorities (e.g. a court or a government agency).</p>
     <h4>Other legal requirements</h4>
     <p>The Company may disclose Your Personal Data in the good faith belief that such action is necessary to:</p>
-    <ul>
+    <ol class="circle-ol">
         <li>Comply with a legal obligation</li>
         <li>Protect and defend the rights or property of the Company</li>
         <li>Prevent or investigate possible wrongdoing in connection with the Service</li>
         <li>Protect the personal safety of Users of the Service or the public</li>
         <li>Protect against legal liability</li>
-    </ul>
+    </ol>
     <h3>Security of Your Personal Data</h3>
     <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over the
         Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable
@@ -382,9 +385,6 @@
         are
         effective when they are posted on this page.</p>
     <h2>Contact Us</h2>
-    <p>If you have any questions about this Privacy Policy, You can contact us:</p>
-    <ul>
-        <li>By email: mbk.muhammadbilalk@gmail.com</li>
-    </ul>
+    <p>If you have any questions about this Privacy Policy, You can <a target="_blank" href="{% url 'contact' %}" class="contact-pp">contact</a> us.</p>
 </div>
 {% endblock %}

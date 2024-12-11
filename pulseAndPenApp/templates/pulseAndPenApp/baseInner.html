@@ -1,0 +1,193 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <!-- Bootstrap5 for all pages -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
+        integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
+        integrity="sha512-7Pi/otdlbbCR+LnW+F7PwFcSDJOuUJB3OxtEHbg4vSMvzvJjde4Po1v4BR9Gdc9aXNUNFVUY+SK51wWT8WF0Gg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Dancing+Script:wght@400..700&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+    {% block links %}{% endblock %}
+
+    <!-- Title -->
+    <title>{% block title %}{% endblock %}</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand brand-name" href="#">
+                <img src="{% static 'images/logo.png' %}" alt="Logo" width="30" height="24"
+                    class="d-inline-block align-text-top">
+                Pulse & Pen
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ">
+                        <a class="nav-link text-light" aria-current="page" href="{% url 'home' %}">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item " href="#">Technology</a></li>
+                            <li><a class="dropdown-item" href="#">Fashion</a></li>
+                            <li><a class="dropdown-item" href="#">Food</a></li>
+                            <li><a class="dropdown-item" href="#">Lifestyle</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'publish' %}">Publish</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'about' %}">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light" href="{% url 'contact' %}">Contact</a>
+                    </li>
+                </ul>
+                <form class="search d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-warning" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav mx-1 mb-2 mb-lg-0">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Profile
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Technology</a></li>
+                            <li><a class="dropdown-item" href="#">Fashion</a></li>
+                            <li><a class="dropdown-item" href="#">Food</a></li>
+                            <li><a class="dropdown-item" href="#">Lifestyle</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+    <footer id="footer" class="container w-100 py-2">
+        <div
+            class="container wrapper-1 d-flex flex-column flex-sm-row justify-content-sm-around align-items-center align-items-sm-start w-100 my-2">
+            <div class="footer-1 d-flex flex-row justify-content-between align-items-start">
+                <div
+                    class="brand-info d-flex flex-column justify-content-center justify-content-sm-start align-items-center m-3">
+                    <h3 class="footer-brand-name">
+                        Pulse & Pen
+                    </h3>
+                    <p class="brand-info-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Repudiandae id
+                        nisi</p>
+                </div>
+                <div
+                    class="useful-links d-flex flex-column justify-content-center justify-content-sm-start align-items-center m-3">
+                    <h5 class="useful-title">Useful Links</h5>
+                    <ul class="useful-list">
+                        <li class="useful-item"><a href="{% url 'about' %}" class="text-decoration-none">About Us</a>
+                        </li>
+                        <li class="useful-item"><a href="{% url 'contact' %}" class="text-decoration-none">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-2 d-flex flex-row justify-content-between align-items-start">
+                <div
+                    class="contact d-flex flex-column justify-content-center justify-content-sm-start align-items-center m-3">
+                    <h5 class="contact-title">Connect</h5>
+                    <ul class="contact-list">
+                        <li class="contact-item d-flex align-items-center"><img width="16" height="16"
+                                src="https://img.icons8.com/color/48/marker--v2.png" alt="loc" /><a target="_blank"
+                                href="https://maps.app.goo.gl/hdUWD1Dp23bEydfQ6" class="text-decoration-none ms-2">
+                                Karachi, Pakistan</a></li>
+                        <li class="contact-item d-flex align-items-center"><img width="16" height="16"
+                                src="https://img.icons8.com/emoji/50/telephone-receiver.png"
+                                alt="telephone-receiver" /><a target="_blank" href="tel:+923362644958"
+                                class="text-decoration-none ms-2">Make a call
+                            </a></li>
+                        <li class="contact-item d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg"
+                                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="16" height="16"
+                                viewBox="0 0 256 256" xml:space="preserve">
+
+                                <defs>
+                                </defs>
+                                <g style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+                                    transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)">
+                                    <path
+                                        d="M 79.864 77.97 H 10.136 C 4.538 77.97 0 73.432 0 67.834 V 22.166 C 0 16.568 4.538 12.03 10.136 12.03 h 69.727 C 85.462 12.03 90 16.568 90 22.166 v 45.668 C 90 73.432 85.462 77.97 79.864 77.97 z"
+                                        style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(209,56,45); fill-rule: nonzero; opacity: 1;"
+                                        transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                    <path
+                                        d="M 56.996 47.309 H 33.004 L 4.243 76.07 c 1.662 1.191 3.693 1.9 5.893 1.9 h 69.728 c 2.484 0 4.756 -0.896 6.519 -2.379 L 56.996 47.309 z"
+                                        style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(185,51,41); fill-rule: nonzero; opacity: 1;"
+                                        transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                    <path
+                                        d="M 79.864 12.03 H 10.136 c -2.71 0 -5.165 1.07 -6.984 2.802 l 34.118 37.159 c 4.148 4.551 11.31 4.551 15.458 0 l 34.114 -37.163 C 85.025 13.098 82.571 12.03 79.864 12.03 z"
+                                        style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(244,67,54); fill-rule: nonzero; opacity: 1;"
+                                        transform=" matrix(1 0 0 1 0 0) " stroke-linecap="round" />
+                                </g>
+                            </svg><a target="_blank" href="mailto:mbk.muhammadbilalk@gmail.com"
+                                class="text-decoration-none ms-2">Send an email</a></li>
+                    </ul>
+                </div>
+                <div
+                    class="legal d-flex flex-column justify-content-center justify-content-sm-start align-items-center m-3">
+                    <h5 class="legal-title">Legal</h5>
+                    <ul class="legal-list">
+                        <li class="legal-item">
+                            <a href="{% url 'terms-and-conditions' %}" class="text-decoration-none">Terms and
+                                Services</a>
+                        </li>
+                        <li class="legal-item"><a href="{% url 'privacy-policy' %}" class="text-decoration-none">Privacy
+                                Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <form class="newsletter d-flex flex-column flex-sm-row w-100 justify-content-sm-between align-items-center p-3">
+            {% csrf_token %}
+            <div class="newsletter-text">
+                Subscribe <span>OUR NEWSLETTER</span>
+            </div>
+            <div class="newsletter-email d-flex justify-content-end align-items-center flex-grow-1">
+                <input type="email" class="email-input container-fluid" name="newsletter-email"
+                    placeholder="Enter your email here">
+                <button class="newsletter-btn btn btn-warning">Subscribe</button>
+            </div>
+        </form>
+        <div class="copyright container-fluid d-flex justify-content-center align-items-center">
+            <p>&copy; 2024 Pulse and Pen. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>

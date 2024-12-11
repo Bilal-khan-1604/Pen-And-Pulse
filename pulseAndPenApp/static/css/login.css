@@ -8,12 +8,8 @@ body {
     --inputs-width: 25vw;
 }
 
-.cover-sign-in {
-    display: none;
-}
-
-.cover-foot {
-    margin-top: 0;
+.cover-sign-in-btn {
+    display: none !important;
 }
 
 .signin,

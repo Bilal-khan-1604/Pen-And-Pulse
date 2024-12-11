@@ -1,0 +1,90 @@
+.custom-popover {
+    --bs-popover-max-width: 200px;
+    --bs-popover-border-color: var(--bd-violet-bg);
+    --bs-popover-header-bg: var(--bd-violet-bg);
+    --bs-popover-header-color: var(--bs-black);
+    --bs-popover-body-padding-x: 1rem;
+    --bs-popover-body-padding-y: .5rem;
+}
+ .offcanvas{
+    --bs-offcanvas-padding-x: 0 !important;
+ }
+
+ .offcanvas-close-btn{
+    margin-right: 10px !important;
+ }
+
+.main-wrapper{
+    border: 1px solid black;
+}
+.custom-offcanvas {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow-y: auto;
+    z-index: 1055;
+}
+
+.fixed-height-column {
+    height: 100vh;
+    overflow-y: auto;
+}
+
+
+.accordion-body {
+    font-size: 14px !important;
+}
+
+.accordion-button:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.main-heading {
+    font-family: "Raleway", serif !important;
+    font-optical-sizing: auto;
+    font-weight:400;
+    font-size: 2.5em;
+    font-style: normal;
+    color: #031a6e;
+    text-shadow: 2px 2px #fff;
+    word-spacing: 0.2em;
+}
+
+
+input, select{
+    min-height: 30px;
+    border-radius: 2rem;
+}
+
+textarea{
+    border-radius: 1rem;
+}
+
+input, select, textarea{
+    border: 1px solid black;
+    font-size: 14px;
+}
+
+input:focus, select:focus, textarea:focus{
+    outline: none;
+}
+
+.blog-thumbnail input[type='file']::file-selector-button{
+    background-color: transparent !important;
+    border: none;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.left-column, .accordion-body, .offcanvas{
+    background-color: #B0D4DD !important;
+}
+
+.accordion-button, .left-col-heading, .offcanvas-header{
+    color: white;
+    background-color: #367588 !important;
+}
+
+.accordion-button:not(.collapsed){
+    color: #B0D4DD;
+}

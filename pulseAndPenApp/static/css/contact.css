@@ -238,19 +238,20 @@
   object-fit: cover;
 }
 
-.share-icon img{
+.share-icon img {
   cursor: pointer;
 }
 
-.contactus-head-touch{
+.contactus-head-touch {
   color: #FFA500;
   text-decoration: underline solid #FFA500 3px;
   text-underline-offset: 6px;
 }
 
-.btn-close{
+.btn-close {
   background-color: white !important;
 }
+
 @media (max-width: 768px) {
   .landing_page .responsive-cell-block.wk-desk-6.wk-ipadp-6.wk-tab-12.wk-mobile-12.left-one {
     justify-content: center;

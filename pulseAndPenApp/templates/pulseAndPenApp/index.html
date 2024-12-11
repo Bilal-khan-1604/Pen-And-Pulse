@@ -1,57 +1,59 @@
-{% extends 'pulseAndPenApp/base1.html' %}
+{% extends 'pulseAndPenApp/baseOuter.html' %}
+
 
 {% block links %}
 {% load static%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/index.css' %}">
-<link rel="prefetch" href="{% static sign-in.html}">
-<link rel="preload" href="{% static sign-up.html}" as="document">
-<link rel="preload" href="{% static sign-in.css}" as="style">
-<link rel="preload" href="{% static sign-up.css}" as="style">
-<link rel="preload" href="{% static sign-in.js}" as="script">
+<link rel="preload" type="text/css" href="pulseAndPenApp/static/css/login.css" as="style">
+<link rel="preload" type="text/css" href="pulseAndPenApp/static/css/signup.css" as="style">
 <script src="{% static 'js/cover.js' %}" defer></script>
 {% endblock %}
 
-{% block title %}Pulse & Pen{% endblock %}
+{% block title %}
+Pulse & Pen
+{% endblock %}
 
 {% block content %}
-<picture class="cover-bg">
-    <source srcset="{% static 'images/coverxxS.png' %}" media="(max-width: 900px)">
-    <source srcset="{% static 'images/coverxS.png' %}" media="(max-width: 1070px)">
-    <source srcset="{% static 'images/coverS.png' %}" media="(max-width: 1220px)">
-    <img src="{% static 'images/coverL.png' %}" alt="Description of the image">
-</picture>
-<div class="cover-content">
-    <div class="cover-text">
-        <div class="colorful-text1">
-            <span class="letter letter-j">J</span>
-            <span class="letter letter-u">U</span>
-            <span class="letter letter-s">S</span>
-            <span class="letter letter-t">T</span>
-            <span> </span>
-            <span class="letter letter-b">B</span>
-            <span class="letter letter-e">E</span>
+<div class="content cover w-100 d-flex flex-row-reverse">
+    <picture class="cover-bg">
+        <source srcset="{% static 'images/coverxxS.png' %}" media="(max-width: 900px)">
+        <source srcset="{% static 'images/coverxS.png' %}" media="(max-width: 1070px)">
+        <source srcset="{% static 'images/coverS.png' %}" media="(max-width: 1220px)">
+        <img src="{% static 'images/coverL.png' %}" alt="Description of the image" class="img-fluid">
+    </picture>
+    <div class="cover-content">
+        <div class="cover-text">
+            <div class="colorful-text1">
+                <span class="letter letter-j">J</span>
+                <span class="letter letter-u">U</span>
+                <span class="letter letter-s">S</span>
+                <span class="letter letter-t">T</span>
+                <span> </span>
+                <span class="letter letter-b">B</span>
+                <span class="letter letter-e">E</span>
+            </div>
+            <div class="colorful-text1-1">
+                <span class="letter letter-b">B</span>
+                <span class="letter letter-e">E</span>
+            </div>
+            <div class="colorful-text2">
+                <span class="letter letter-y">Y</span>
+                <span class="letter letter-o">O</span>
+                <span class="letter letter-u2">U</span>
+            </div>
+            <div class="sub-text">
+                <p>
+                    Write your story, read the world, and let your journey begin here.
+                </p>
+            </div>
         </div>
-        <div class="colorful-text1-1">
-            <span class="letter letter-b">B</span>
-            <span class="letter letter-e">E</span>
-        </div>
-        <div class="colorful-text2">
-            <span class="letter letter-y">Y</span>
-            <span class="letter letter-o">O</span>
-            <span class="letter letter-u2">U</span>
-        </div>
-        <div class="sub-text">
-            <p>
-                Write your story, read the world, and let your journey begin here.
-            </p>
-        </div>
-    </div>
-    <div class="cover-btns">
-        <div class="for-btn-margin">
-            <button class="join-btn">
-                Join Now
-            </button>
-            <p class="guest-btn">or continue as guest</p>
+        <div class="cover-btns">
+            <div class="for-btn-margin">
+                <button class="join-btn">
+                    Join Now
+                </button>
+                <p class="guest-btn">or continue as guest</p>
+            </div>
         </div>
     </div>
 </div>
