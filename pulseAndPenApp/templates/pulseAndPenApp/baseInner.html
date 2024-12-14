@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
     {% block links %}{% endblock %}
 
+    <!-- JavaScript -->
+    <script src="{% static "js/baseInner.js" %}" defer></script>
+    <script src="{% static "js/base.js" %}" defer></script>
+
     <!-- Title -->
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -47,28 +51,28 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item ">
+                    <li class="nav-item {% if active == 'home' %}active{% endif %}">
                         <a class="nav-link text-light" aria-current="page" href="{% url 'home' %}">Home</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown {% if active == 'blogs' %}active{% endif %}">
                         <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
-                            Categories
+                            Blogs
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item " href="#">Technology</a></li>
-                            <li><a class="dropdown-item" href="#">Fashion</a></li>
-                            <li><a class="dropdown-item" href="#">Food</a></li>
-                            <li><a class="dropdown-item" href="#">Lifestyle</a></li>
+                            <li><a class="dropdown-item" href="{% url 'blogs' 'fashion' %}">Fashion</a></li>
+                            <li><a class="dropdown-item" href="{% url 'blogs' 'travel' %}">Travel</a></li>
+                            <li><a class="dropdown-item " href="{% url 'blogs' 'technology' %}">Technology</a></li>
+                            <li><a class="dropdown-item" href="{% url 'blogs' 'food' %}">Food</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% if active == 'publish' %}active{% endif %}">
                         <a class="nav-link text-light" href="{% url 'publish' %}">Publish</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% if active == 'about' %}active{% endif %}">
                         <a class="nav-link text-light" href="{% url 'about' %}">About Us</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item {% if active == 'contact' %}active{% endif %}">
                         <a class="nav-link text-light" href="{% url 'contact' %}">Contact</a>
                     </li>
                 </ul>
@@ -77,24 +81,32 @@
                     <button class="btn btn-outline-warning" type="submit">Search</button>
                 </form>
                 <ul class="navbar-nav mx-1 mb-2 mb-lg-0">
+                    {% if not authenticatedUser %}
+                    <li class="nav-item my-2">
+                        <button class="btn btn-warning" type="button" onclick="window.location.href='/login/'">Sign
+                            in</button>
+                    </li>
+                    {% else %}
+                    <!-- IF AUTHORIZED -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Profile
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Technology</a></li>
-                            <li><a class="dropdown-item" href="#">Fashion</a></li>
-                            <li><a class="dropdown-item" href="#">Food</a></li>
-                            <li><a class="dropdown-item" href="#">Lifestyle</a></li>
+                            <li><a class="dropdown-item" href="#">Settings</a></li>
+                            <li><a class="dropdown-item" href="" id="logoutButton">Log out</a></li>
                         </ul>
                     </li>
+                    {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
 
-    {% block content %}{% endblock %}
+    {% block content %}
+
+    {% endblock %}
     <footer id="footer" class="container w-100 py-2">
         <div
             class="container wrapper-1 d-flex flex-column flex-sm-row justify-content-sm-around align-items-center align-items-sm-start w-100 my-2">
@@ -104,9 +116,7 @@
                     <h3 class="footer-brand-name">
                         Pulse & Pen
                     </h3>
-                    <p class="brand-info-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Repudiandae id
-                        nisi</p>
+                    <p class="brand-info-text text-center">Pulse and Pen: Where ideas come alive through words and insights.</p>
                 </div>
                 <div
                     class="useful-links d-flex flex-column justify-content-center justify-content-sm-start align-items-center m-3">
@@ -172,7 +182,7 @@
                 </div>
             </div>
         </div>
-        <form class="newsletter d-flex flex-column flex-sm-row w-100 justify-content-sm-between align-items-center p-3">
+        <form method="post" action='/subscribe/newsletter/' class="newsletter d-flex flex-column flex-sm-row w-100 justify-content-sm-between align-items-center p-3">
             {% csrf_token %}
             <div class="newsletter-text">
                 Subscribe <span>OUR NEWSLETTER</span>

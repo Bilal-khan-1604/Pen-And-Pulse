@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import User, Contact, Blog
+from .models import User, Contact, Blog, Comment, NewsletterSubscription
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True, style={'input_type': 'password'})
@@ -44,3 +44,19 @@ class BlogSerializer(serializers.ModelSerializer):
         fields = ['id', 'author', 'title', 'content', 'category', 'thumbnail_url', 'created_at']
         read_only_fields = ['id', 'author', 'created_at']
 
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = ['id', 'blog', 'user', 'text', 'created_at']
+        read_only_fields = ['id', 'blog', 'user', 'created_at']
+
+    def create(self, validated_data):
+        # Add additional logic if needed
+        return super().create(validated_data)
+    
+
+class NewsletterSubscriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = NewsletterSubscription
+        fields = ['email']

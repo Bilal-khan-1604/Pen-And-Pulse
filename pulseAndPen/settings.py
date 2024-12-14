@@ -45,6 +45,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'pulseAndPenApp.context_processors.active_tab_processor',
             ],
         },
     },
@@ -99,7 +100,7 @@ LOGOUT_REDIRECT_URL = 'login/'
 # JWT Configurations
 JWT_SECRET_KEY = config('JWT_SECRET_KEY')
 JWT_ALGORITHM = config('JWT_ALGORITHM', default='HS256')
-JWT_EXPIRATION_TIME = config('JWT_EXPIRATION_TIME', default=3600, cast=int)  # Cast ensures it's an integer
+JWT_EXPIRATION_TIME = config('JWT_EXPIRATION_TIME', default=3600, cast=int)
 
 INSTALLED_APPS += [
     'cloudinary',

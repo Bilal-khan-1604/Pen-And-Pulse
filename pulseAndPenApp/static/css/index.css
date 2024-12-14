@@ -147,6 +147,7 @@
 .guest-btn {
     margin: 1vw 0;
     color: white;
+    text-decoration: none;
     cursor: pointer;
 
     &:hover {

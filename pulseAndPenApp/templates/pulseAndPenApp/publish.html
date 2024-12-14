@@ -318,41 +318,41 @@ Write a Blog
                         </button>
                     </div>
                     <div class="container-fluid">
-                        <form id="post-blog" method="post" action="/publish/blog/" class="container my-3 my-lg-2 my-md-1">
+                        <form id="post-blog" method="post" action="/publish/blog/"
+                            class="container my-3 my-lg-2 my-md-1">
                             {% csrf_token %}
                             <div
                                 class="title d-flex flex-column justify-content-center align-items-center flex-grow-1 w-100 my-2">
-                                <label
-                                    class="for-title d-inline-flex flex-grow-1 w-100 my-1 px-3">Title:</label>
+                                <label class="for-title d-inline-flex flex-grow-1 w-100 my-1 px-3">Title:</label>
                                 <input type="text" class="blog-title d-inline-flex flex-grow-1 w-100 my-1 px-3"
                                     name="title" placeholder="Enter your blog title here" required value="">
                             </div>
                             <div
                                 class="category d-flex flex-column justify-content-center align-items-center flex-grow-1 w-100 my-2">
-                                <label
-                                    class="for-category d-inline-flex flex-grow-1 w-100 my-1 px-3">Category:</label>
+                                <label class="for-category d-inline-flex flex-grow-1 w-100 my-1 px-3">Category:</label>
                                 <select id="category" name="category"
                                     class="blog-category d-inline-flex flex-grow-1 w-100 my-1 px-3" required>
                                     <option value="" disabled selected>Select your blog category</option>
-                                    <option value="apple">Fashion</option>
-                                    <option value="banana">Banana</option>
-                                    <option value="cherry">Cherry</option>
+                                    <option value="fashion">Fashion</option>
+                                    <option value="travel">Travel</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="food">Food</option>
                                 </select>
                             </div>
                             <div
                                 class="blog-thumbnail d-flex flex-column justify-content-center align-items-center flex-grow-1 w-100 my-2">
                                 <label for="blog-thumbnail"
                                     class="for-thumbnail d-inline-flex flex-grow-1 w-100 my-1 px-3">Thumbnail</label>
-                                <input type="file" accept=".jpg,.jpeg" id="blog-thumbnail" id="blog-thumbnail" title="Select a file"
-                                    class="blog-thumbnail d-inline-flex flex-grow-1 w-100 my-1 px-3"
-                                    name="thumbnail" placeholder="Upload your blog thumbnail">
+                                <input type="file" accept=".jpg,.jpeg,.avif" id="blog-thumbnail"
+                                    title="Select a file"
+                                    class="blog-thumbnail d-inline-flex flex-grow-1 w-100 my-1 px-3" name="thumbnail"
+                                    placeholder="Upload your blog thumbnail" required>
                             </div>
                             <div class="blog-content d-flex flex-column justify-content-center align-items-center flex-grow-1 w-100 my-2"
                                 style="height: 500px;">
-                                <label
-                                    class="blog-content d-inline-flex flex-shrink-1 w-100 my-1 px-3">Content:</label>
+                                <label class="blog-content d-inline-flex flex-shrink-1 w-100 my-1 px-3">Content:</label>
                                 <textarea type="text" class="blog-content d-inline-flex flex-grow-1 w-100 my-1 p-3"
-                                    name="content" placeholder="Write your blog here" required ></textarea>
+                                    name="content" placeholder="Write your blog here" required></textarea>
                             </div>
                             <div class="d-flex justify-content-center align-items-center flex-grow-1">
                                 <button class="btn btn-warning w-100" type="submit">
@@ -372,7 +372,8 @@ Write a Blog
     aria-labelledby="offcanvasLeftLabel">
     <div class="offcanvas-header text-center my-1">
         <h5 id="offcanvasLeftLabel" class="w-100">Utilities Hints</h5>
-        <button type="button" class="btn-close offcanvas-close-btn" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <button type="button" class="btn-close offcanvas-close-btn" data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
     </div>
     <div class="offcanvas-body  pt-0">
         <div class="accordion accordion-flush" id="accordionFlushExample">
@@ -644,5 +645,10 @@ Write a Blog
             </div>
         </div>
     </div>
+</div>
+
+<div class="loading-overlay">
+    <div class="spinner-border m-5" role="status">
+      </div>
 </div>
 {% endblock %}

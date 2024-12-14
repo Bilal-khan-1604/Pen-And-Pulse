@@ -1,0 +1,100 @@
+.full-screen-block, .content-overlay, .content-overlay div{
+  min-height: 100vh;
+}
+
+.full-screen-block {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.full-screen-block .bg-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.full-screen-block .bg-cover img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.overlay-light{
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.overlay-dark{
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.full-screen-block .content-overlay {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
+}
+
+.profile-img{
+  filter: grayscale(20%);
+}
+
+.block-info{
+  max-width: 700px;
+  min-width: 300px;
+  z-index: 100;
+}
+
+.left-animated, .right-animated{
+  position: relative;
+  opacity: 0;
+}
+
+.left-animated {
+  transform: translateX(-100%);
+  transition: transform 1s ease-out, opacity 1s ease-out;
+}
+
+.right-animated {
+  transform: translateX(100%);
+  transition: transform 1s ease-in, opacity 1s ease-in;
+}
+
+.visible {
+  transform: translateX(0) !important;
+  opacity: 1;
+}
+
+@media (max-width: 992px){
+  .full-screen-block-1 {
+    min-height: 0vh;
+  }
+  .block-1, .block-1 div{
+    min-height: 0;
+  }
+  .block-1 div{
+    margin-bottom: 40px !important;
+  }
+}
+
+@media (max-width: 576px){
+  .full-screen-block {
+    min-height: 70vh;
+  }
+  .content-overlay, .content-overlay div{
+    min-height: 0;
+  }
+}
+

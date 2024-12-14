@@ -27,6 +27,7 @@
 
     <!-- JavaScript -->
     <script src="{% static 'js/baseOuter.js' %}" defer></script>
+    <script src="{% static "js/base.js" %}" defer></script>
 
     <!-- Title -->
     <title>{% block title %}{% endblock %}</title>
@@ -55,9 +56,7 @@
                     <h3 class="footer-brand-name">
                         Pulse & Pen
                     </h3>
-                    <p class="brand-info-text text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Repudiandae id
-                        nisi</p>
+                    <p class="brand-info-text text-center">Pulse and Pen: Where ideas come alive through words and insights.</p>
                 </div>
                 <div
                     class="useful-links d-flex flex-column justify-content-center justify-content-sm-start align-items-center m-3">
@@ -123,7 +122,7 @@
                 </div>
             </div>
         </div>
-        <form class="newsletter d-flex flex-column flex-sm-row w-100 justify-content-sm-between align-items-center p-3">
+        <form method="post" action='/subscribe/newsletter/' class="newsletter d-flex flex-column flex-sm-row w-100 justify-content-sm-between align-items-center p-3">
             {% csrf_token %}
             <div class="newsletter-text">
                 Subscribe <span>OUR NEWSLETTER</span>

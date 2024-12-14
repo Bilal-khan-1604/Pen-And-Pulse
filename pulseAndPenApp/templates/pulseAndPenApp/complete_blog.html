@@ -1,0 +1,69 @@
+{% extends 'pulseAndPenApp/baseInner.html' %}
+
+
+{% block links %}
+{% load static%}
+<link rel="stylesheet" href="{% static 'css/complete_blog.css' %}">
+<script src="{% static 'js/complete_blog.js' %}" defer></script>
+{% endblock %}
+
+{% block title %}
+Pulse & Pen
+{% endblock %}
+
+{% block content %}
+<section class="container-fluid p-3">
+    <div class="full-blog m-2 py-4 px-3">
+        <div class="blog-title px-2">
+            <h1>{{blog.title}}</h1>
+        </div>
+        <div class="rule mt-5 mb-2">
+            <hr>
+        </div>
+        <div class="blog-author px-2 ">
+            <h4 class="blog-author-name">
+                <span>
+                    By {{ blog.author}}
+                </span>
+                <em class="text-body-secondary">
+                    on {{ blog.created_at }}
+                </em>
+            </h4>
+        </div>
+        <div class="rule mt-2 mb-5">
+            <hr>
+        </div>
+        <div class="blog-thumbnail container-fluid d-flex justify-content-center align-items-center">
+            <img src="{{blog.thumbnail_url}}" alt="" class="img-fluid">
+        </div>
+        <div class="blog-content container my-3 d-flex overflow-hidden justify-content-center">
+                {{ blog.content}}
+        </div>
+        <div class="rule my-5 ">
+            <hr>
+        </div>
+        <div class="all-coments px-2 container">
+            <a href="/blog/{{blog.title|urlencode}}/{{blog.id}}/comments/">View all comments</a>
+        </div>
+        <form action="/blog/comment/" method="post" id="commentForm" class="comment-form d-flex flex-column container-fluid py-5">
+            {% csrf_token %}
+            <textarea name="comment" id="comment-text" placeholder="Write your comment here..." required></textarea>
+            <input class="blog-id" type="hidden" name="blog_id" value="{{ blog.id }}">
+            <div class="comment-btn d-flex justify-content-end mt-3">
+                {% if authenticatedUser %}
+                <button class="btn btn-warning" type="submit">
+                    Comment
+                </button>
+                {% else%}
+                <a href="/login/" class="btn btn-warning">Comment</a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+</section>
+
+<div class="loading-overlay">
+    <div class="spinner-border m-5" role="status">
+      </div>
+</div>
+{% endblock %}

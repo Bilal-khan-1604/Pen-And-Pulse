@@ -1,41 +1,53 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.permissions import IsAuthenticated
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from rest_framework.parsers import MultiPartParser, FormParser
 from django.shortcuts import render
 from django.conf import settings
 from django.shortcuts import redirect
 from django.contrib.auth import authenticate
-from .serializers import UserSerializer, ContactSerializer, BlogSerializer
+from .serializers import UserSerializer, ContactSerializer, BlogSerializer, CommentSerializer, NewsletterSubscriptionSerializer
 from datetime import datetime, timezone, timedelta
 from functools import wraps
 import jwt, cloudinary, cloudinary.uploader
+from .models import Blog, User, Comment
+from django.utils.decorators import method_decorator
+from django.core.handlers.wsgi import WSGIRequest
+from django.shortcuts import get_object_or_404
+from urllib.parse import unquote
+from django.http import HttpResponse
 
 def auth_required(optional=False):
     def decorator(view_func):
         @wraps(view_func)
         def wrapper(request, *args, **kwargs):
+            if len(args) > 0 and hasattr(args[0], 'request') and not isinstance(args[0], WSGIRequest):
+                request = args[0].request
+            elif len(args) > 0 and isinstance(args[0], WSGIRequest):
+                request = args[0]
+                
             token = request.COOKIES.get('authToken')
+            request.user = False
 
-            if not token:
-                if optional:
-                    return view_func(request, *args, **kwargs)
+            if token:
+                try:
+                    payload = jwt.decode(
+                        token, 
+                        settings.JWT_SECRET_KEY, 
+                        algorithms=[settings.JWT_ALGORITHM]
+                    )
+                    request.user = User.objects.get(id=payload.get("id"))
+                except (jwt.ExpiredSignatureError, jwt.InvalidTokenError):
+                    if not optional:
+                        response = redirect('/login/')
+                        response.delete_cookie('authToken')
+                        return response
+
+            if not optional and not request.user:
                 return redirect('/login/')
-
-            try:
-                payload = jwt.decode(token, settings.JWT_SECRET_KEY, algorithms=[settings.JWT_ALGORITHM])
-                request.user_id = payload.get("id")
-                return view_func(request, *args, **kwargs)
-            except jwt.ExpiredSignatureError:
-                response = redirect('/login/')
-                response.delete_cookie('authToken')
-                return response
-            except jwt.InvalidTokenError:
-                response = redirect('/login/')
-                response.delete_cookie('authToken')
-                return response
-
+            
+            return view_func(request, *args, **kwargs)
         return wrapper
     return decorator
 
@@ -66,13 +78,90 @@ def terms_and_conditions(request):
 
 @auth_required(optional=True)
 def home_view(request):
-    return render(request, 'pulseAndPenApp/home.html')
+    return render(request, 'pulseAndPenApp/home.html', {
+        'authenticatedUser': bool(request.user),
+        'user_info': request.user
+    })
 
+
+@auth_required(optional=True)
+def blogs(request, type):
+    print(type)
+    blog_list = Blog.objects.filter(category=type)
+    print(blog_list)
+
+    paginator = Paginator(blog_list, 5)
+    page = request.GET.get('page')
+
+    try:
+        blogs = paginator.page(page)
+    except PageNotAnInteger:
+        blogs = paginator.page(1)
+    except EmptyPage:
+        blogs = paginator.page(paginator.num_pages)
+
+    context = {
+        'type': type,
+        'blogs': blogs,
+        'authenticatedUser': bool(request.user),
+        'user_info': request.user
+    }
+
+    return render(request, 'pulseAndPenApp/blogs.html', context)
+
+
+@auth_required(optional=True)
+def complete_blog(request, title):
+    blog = get_object_or_404(Blog, title=unquote(title))
+    context = {
+        'blog': blog,
+        'authenticatedUser': bool(request.user),
+        'user_info': request.user
+    }
+
+    return render(request, 'pulseAndPenApp/complete_blog.html', context)
 
 @auth_required()
 def publish(request):
-    return render(request, 'pulseAndPenApp/publish.html')
+    return render(request, 'pulseAndPenApp/publish.html', {
+        'authenticatedUser': bool(request.user),
+        'user_info': request.user
+    })
 
+
+class NewsletterSubscriptionView(APIView):
+    def post(self, request):
+        serializer = NewsletterSubscriptionSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                {"message": "Thank you for subscribing to our newsletter!"},
+                status=status.HTTP_201_CREATED
+            )
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+def get_blog_comments(request, title, blog_id):
+    blog = Blog.objects.filter(id=blog_id).first()
+    if not blog:
+        return HttpResponse("Blog not found", status=404)
+
+    comments = blog.comments.select_related('user')
+    comment_data = [
+        {
+            'text': comment.text,
+            'created_at': comment.created_at,
+            'user_email': comment.user.email,
+            'user_id': comment.user.id,
+        }
+        for comment in comments
+    ]
+
+    return render(request, 'pulseAndPenApp/comments.html', {
+        'comments': comment_data,
+        'blog': blog,
+    }) 
 
 class LoginView(APIView):
     def get(self, request, *args, **kwargs):
@@ -95,7 +184,7 @@ class LoginView(APIView):
             response.set_cookie(
                 'authToken', 
                 token, 
-                httponly=True,
+                httponly=False,
                 secure=True,
                 samesite='Strict'
             )
@@ -131,12 +220,14 @@ class ContactView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
 
+@method_decorator(auth_required(), name='post')
 class BlogCreateView(APIView):
-    permission_classes = [IsAuthenticated]
     parser_classes = [MultiPartParser, FormParser]
-
     def post(self, request, *args, **kwargs):
+        if not request.user:
+            return Response({"error": "Authentication required."}, status=401)
         data = request.data
+        print(data)
 
         thumbnail = request.FILES.get('thumbnail')
         if thumbnail:
@@ -160,3 +251,24 @@ class BlogCreateView(APIView):
             serializer.save(author=request.user)
             return Response(serializer.data, status=201)
         return Response(serializer.errors, status=400)
+    
+
+@method_decorator(auth_required(), name='dispatch')
+class CommentView(APIView):
+
+    def post(self, request):
+        blog_id = request.data.get("blog_id")
+        if not blog_id:
+            return Response({"error": "Blog ID is required"}, status=status.HTTP_400_BAD_REQUEST)
+
+        blog = Blog.objects.filter(id=blog_id).first()
+        if not blog:
+            return Response({"error": "Blog not found"}, status=status.HTTP_404_NOT_FOUND)
+
+        serializer = CommentSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save(blog=blog, user=request.user)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+

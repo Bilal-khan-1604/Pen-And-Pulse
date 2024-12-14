@@ -1,6 +1,26 @@
+function getCookie(name) {
+    const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
+    for (const cookie of cookies) {
+        console.log(cookie);
+        if (cookie.startsWith(`${name}=`)) {
+            return decodeURIComponent(cookie.substring(name.length + 1));
+        }
+    }
+    return null;
+}
+
+// const loadingOverlay = document.querySelector(".loading-overlay");
+
+// function hideLoadingOverlay() {
+//     if (loadingOverlay) loadingOverlay.style.display = "none";
+// }
+
+const authToken = getCookie("authToken");
+console.log(authToken);
+
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('post-blog').reset()
-    const allowedTypes = ['.jpg', '.jpeg'];
+    const allowedTypes = ['.jpg', '.jpeg', '.avif'];
     const thumbnailInput = document.getElementById('blog-thumbnail');
 
     thumbnailInput.addEventListener('change', function () {
@@ -27,36 +47,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     blogForm.addEventListener("submit", function (event) {
         event.preventDefault();
+        // loadingOverlay.style.display = "flex"
         const formData = new FormData(blogForm);
-        const authToken = getCookie("authtoken");
+        const authToken = getCookie("authToken");
+        console.log(authToken);
 
         fetch(blogForm.action, {
             method: blogForm.method,
             body: formData,
             headers: {
+                'X-CSRFToken': getCookie("csrftoken"),
                 'Authorization': `Bearer ${authToken}` // Include JWT token
             }
         })
             .then(response => response.json())
             .then(data => {
-                // Handle success
-                console.log("Form submitted successfully:", data);
+                // hideLoadingOverlay()
                 alert("Blog posted successfully!");
+
             })
             .catch(error => {
-                // Handle errors
-                console.error("Error submitting the form:", error);
-                alert("Failed to post the blog. Please try again.");
+                alert("Failed to post the blog.\n" + error + "\nPlease try again.");
             });
     });
 });
 
-function getCookie(name) {
-    const cookies = document.cookie.split(";").map((cookie) => cookie.trim());
-    for (const cookie of cookies) {
-        if (cookie.startsWith(`${name}=`)) {
-            return decodeURIComponent(cookie.substring(name.length + 1));
-        }
-    }
-    return null;
-}

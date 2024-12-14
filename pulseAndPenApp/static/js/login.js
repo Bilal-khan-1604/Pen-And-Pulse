@@ -98,4 +98,3 @@ function submitForm(form, inputFields, loadingOverlay, emailField, emailPassword
             console.error("Error:", error);
         });
 }
-

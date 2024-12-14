@@ -1,0 +1,39 @@
+.full-blog{
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+                0 -4px 6px rgba(0, 0, 0, 0.1), 
+                4px 0 6px rgba(0, 0, 0, 0.1), 
+                -4px 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.blog-title h1{
+    font-size: 7vw !important;
+    text-transform: capitalize;
+}
+
+.blog-author h4{
+    font-size: 1.5vw !important;
+}
+
+.blog-thumbnail img{
+    max-height: 300px;
+}
+
+.blog-content{
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    text-align: justify;
+}
+
+#comment-text{
+    min-height: 200px;
+    font-size: 14px;
+}
+
+.all-coments a{
+    text-decoration: none;
+}
+
+.all-coments a:hover{
+        text-decoration: underline;
+ }

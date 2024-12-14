@@ -1,0 +1,39 @@
+{% extends 'pulseAndPenApp/baseInner.html' %}
+
+{% block links %}
+{% load static%}
+<link rel="stylesheet" href="{% static 'css/comments.css' %}">
+{% endblock %}
+
+{% block title %}
+Pulse & Pen
+{% endblock %}
+
+{% block content %}
+
+    <div class="blog-name container-fluid mx-5 p-5">
+        <h3> <span class="text-body-secondary">comments on </span> <em> {{ blog.title|title}} </em> </hh3>
+    </div>
+<section class="container-fluid my-5">
+    {% if comments %}
+    {% for comment in comments %}
+    <div class="card mb-3 mx-5">
+        <div class="card">
+            <div class="card-header">
+                by {{ comment.user_email }}
+            </div>
+            <div class="card-body">
+                    <p>{{ comment.text}}</p>
+                    <span class="text-body-secondary" style="font-size: 12px;">{{ comment.created_at}}</span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else%}
+    <section class="no-blogs-found d-flex m-5 py-5 align-items-center justify-content-center">
+        <p>No Blogs Found</p>
+    </section>
+    {% endif %}
+</section>
+
+{% endblock %}
