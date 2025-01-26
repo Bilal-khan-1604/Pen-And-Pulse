@@ -61,10 +61,6 @@ Pulse and Pen is a dynamic blogging website that allows users to create, edit, a
 
 8. Open your browser and go to `http://127.0.0.1:8000` to access the application.
 
-## Screenshots
-
-*(Include some screenshots of your application here, such as the homepage, blog editor, or user dashboard.)*
-
 ## Contributing
 
 Contributions are welcome! To contribute:
